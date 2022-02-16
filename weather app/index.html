@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400;1,800&family=Mochiy+Pop+P+One&family=Quicksand:wght@360&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'EB Garamond', serif;
+            font-family: 'Mochiy Pop P One', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(59, 131, 224);
+        }
+
+        .container {
+            border-radius: 8px;
+            height: 450px;
+            width: 400px;
+            background-color: rgb(255, 255, 255);
+            /* background: url(./sky-clouds.gif); */
+            box-sizing: border-box;
+            box-shadow: -1px 2px 2px 2px rgb(15, 115, 182),0px 2px 2px 4px rgb(15, 115, 182);
+            text-transform: capitalize;
+        }
+
+        .timeimg {
+            height: 45%;
+            width: 100%;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .timeimg i {
+            font-size: 3rem;
+            height: 3rem;
+            display: flex;
+            flex-direction: column;
+            padding-top: 1rem;
+            color: #FDB813;
+            border-radius: 50%;
+        }
+
+        .timeimg h3 {
+            font-size: 1.5rem;
+        }
+
+        .details {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+  .object{
+      /* height: 200px;
+      width: 100%; */
+      border-radius: 300px;
+      /* background-color: #FDB813; */
+      /* transform:rotate(20deg); */
+      animation: rotate 10s linear infinite;
+  }
+  @keyframes rotate {
+      from{
+          transform: rotate(0deg);
+      }
+      to{
+          transform:rotate(360deg);
+      }
+  }
+  .details{
+      position: relative;
+      z-index: 1;
+      /* top: -12rem; */
+  }
+  .location_city{
+      margin-bottom:1rem ;
+      font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  .time{
+      font-size: 1.1rem;
+      margin-bottom:1rem ;
+
+  }
+  .temperature{
+      font-size: 1.2rem;
+      margin-bottom:1rem ;
+
+  }
+
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="timeimg">
+            <h3>sunrise
+                <i class="fa-regular fa-sun"></i>
+            </h3>
+            <!-- <i class="fa-regular fa-moon"></i> -->
+        </div>
+        <div class="object">
+
+        </div>
+        <div class="details">
+           
+            <div class="location_city">
+               <span> pune , maharashtra</span>
+            </div>
+            <div class="time">
+                <p id="daytime"></p>
+            </div>
+            <div class="temperature">
+                12deg celsius
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    const days=['sunday','mon','tue','wed','thrus','fri','sat'];
+    const months=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const date=new Date();
+    let day=days[date.getDay()];
+    let month=months[date.getMonth()];
+    let year=date.getFullYear();
+    let hour=date.getHours();
+    let minutes=date.getMinutes();
+    let str1=String(minutes).length
+    // console.log(str1)
+    if (str1<1) {
+        minutes=`0${str1}`;
+    }
+    loctime=document.getElementById('daytime').innerHTML=`${month} | ${year} | ${day} | ${hour} : ${minutes}`;
+</script>
+</html>
